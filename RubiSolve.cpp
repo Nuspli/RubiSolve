@@ -733,10 +733,11 @@ int solve_white_cross(int cube[]){
                      fprime, fnormal,
                      lprime, lnormal,
                      bprime, bnormal,
-                     uprime, unormal
+                     uprime, unormal,
+                     eprime, enormal,
                      };
 
-    int le = 14;
+    int le = 16;
 
     int o = 0;
     int l = 0;
@@ -751,13 +752,14 @@ int solve_white_cross(int cube[]){
 
     me = true;
 
-    std::string charset[14] = {"M'", "M",
+    std::string charset[16] = {"M'", "M",
                                "S'", "S",
                                "R'", "R",
                                "F'", "F",
                                "L'", "L",
                                "B'", "B",
-                               "U'", "U"
+                               "U'", "U",
+                               "E'", "E"
                                };
 
     std::string solution;
@@ -1587,6 +1589,7 @@ if (me == true){
 }
 
 int start_solving(int cube[]){
+    std::cout << "\nsolving...\n";
 
     rotate_to_starting_position(cube);
 
@@ -2146,7 +2149,6 @@ int main()
                     break;
                 }
                 else if (v == "yes" or v == "y"){
-                    std::cout << "\nsolving...";
                     start_solving(cube);
                     break;
                 }
