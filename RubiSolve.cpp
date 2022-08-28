@@ -707,7 +707,7 @@ int rotate_to_starting_position(int cube[]){
 
 int solve_white_cross(int cube[]){
 
-    if (cube[52] == 6 and cube[50] == 6 and cube[48] == 6 and cube[46] == 6){std::cout << "white cross is already solved\n";}
+    if (cube[52] == 6 and cube[50] == 6 and cube[48] == 6 and cube[46] == 6){std::cout << "white cross is already solved...\n";}
     else{
 
     moves possis[] = {rprime, rnormal,
@@ -729,6 +729,7 @@ int solve_white_cross(int cube[]){
     int o3 = 0;
     int l3 = 0;
     int i3 = 0;
+    int o4 = 0;
 
     me = true;
 
@@ -742,7 +743,7 @@ int solve_white_cross(int cube[]){
     std::string solution;
     solution = "";
     std::cout << solution;
-
+/*------------------------------------------------------------------------------------------- 1 -----------------------------------------------------------------------------------*/
     while (i < le){
         possis[i](cube);
         if (cube[52] == 6 and cube[50] == 6 and cube[48] == 6 and cube[46] == 6){
@@ -757,7 +758,7 @@ int solve_white_cross(int cube[]){
             }
         i ++;
     }
-
+/*------------------------------------------------------------------------------------------- 2 -----------------------------------------------------------------------------------*/
     if (me == true){
     while (l < le){
         if (me == false){break;}
@@ -793,7 +794,7 @@ int solve_white_cross(int cube[]){
         }
         l ++;
     }
-
+/*------------------------------------------------------------------------------------------- 3 -----------------------------------------------------------------------------------*/
     if (me == true){
     while (o < le){
         if (me == false){break;}
@@ -850,7 +851,7 @@ int solve_white_cross(int cube[]){
             }
             o ++;
         }
-
+/*------------------------------------------------------------------------------------------- 4 -----------------------------------------------------------------------------------*/
     if (me == true){
     while (i2 < le){
         if (me == false){break;}
@@ -866,6 +867,7 @@ int solve_white_cross(int cube[]){
             if (me == false){break;}
             possis[o](cube);
             if (cube[52] == 6 and cube[50] == 6 and cube[48] == 6 and cube[46] == 6){
+                solution += charset[i2];
                 if (charset[i2] == charset[o]){solution += '2';}
                 else{solution += charset[o];}
                 me = false;
@@ -880,7 +882,6 @@ int solve_white_cross(int cube[]){
                         solution += charset[i2];
                         if (charset[i2] == charset[o]){solution += '2';}
                         else{solution += charset[o];}
-                        solution += charset[o];
                         if (charset[o] == charset[l]){solution += '2';}
                         else{solution += charset[l];}
                         me = false;
@@ -929,10 +930,118 @@ int solve_white_cross(int cube[]){
             possis[i2](cube);
         }
         i2 ++;
+    }
+/*------------------------------------------------------------------------------------------- 5 -----------------------------------------------------------------------------------*/
+    if (me == true){
+    while (l2 < le){
+        if (me == false){break;}
+        possis[l2](cube);
+        if (cube[52] == 6 and cube[50] == 6 and cube[48] == 6 and cube[46] == 6){
+            solution += charset[l2];
+            me = false;
+            break;
+        }
+        else{
+        while (i2 < le){
+            if (me == false){break;}
+            possis[i2](cube);
+            if (cube[52] == 6 and cube[50] == 6 and cube[48] == 6 and cube[46] == 6){
+                solution += charset[l2];
+                if (charset[l2] == charset[i2]){solution += '2';}
+                else{solution += charset[i2];}
+                me = false;
+                break;
+            }
+        else{
+            o = 0;
+            while (o < le){
+                if (me == false){break;}
+                possis[o](cube);
+                if (cube[52] == 6 and cube[50] == 6 and cube[48] == 6 and cube[46] == 6){
+                    solution += charset[l2];
+                    if (charset[l2] == charset[i2]){solution += '2';}
+                    else{solution += charset[i2];}
+                    if (charset[i2] == charset[o]){solution += '2';}
+                    else{solution += charset[o];}
 
+                    me = false;
+                    break;
+                }
+                else{
+                    l = 0;
+                    while (l < le){
+                        if (me == false){break;}
+                        possis[l](cube);
+                        if (cube[52] == 6 and cube[50] == 6 and cube[48] == 6 and cube[46] == 6){
+                            solution += charset[l2];
+                            if (charset[l2] == charset[i2]){solution += '2';}
+                            else{solution += charset[i2];}
+                            if (charset[i2] == charset[o]){solution += '2';}
+                            else{solution += charset[o];}
+                            if (charset[o] == charset[l]){solution += '2';}
+                            else{solution += charset[l];}
+                            me = false;
+                            break;
+                        }
+                        else
+                        {
+                            i = 0;
+                            while (i < le){
+                                possis[i](cube);
+                                    if (cube[52] == 6 and cube[50] == 6 and cube[48] == 6 and cube[46] == 6){
+                                    solution += charset[l2];
+                                    if (charset[l2] == charset[i2]){solution += '2';}
+                                    else{solution += charset[i2];}
+                                    if (charset[i2] == charset[o]){solution += '2';}
+                                    else{solution += charset[o];}
+                                    if (charset[o] == charset[l]){solution += '2';}
+                                    else{solution += charset[l];}
+                                    if (charset[l] == charset[i]){solution += '2';}
+                                    else{solution += charset[i];}
+                                    me = false;
+                                    break;}
+                                else
+                                {
+                                    possis[i](cube);
+                                    possis[i](cube);
+                                    possis[i](cube);
+                                    }
+                                i ++;
+                            }
+                            if (me == false){break;}
+                            possis[l](cube);
+                            possis[l](cube);
+                            possis[l](cube);
+                        }
+                        l ++;
+                    }
+                    if (me == false){break;}
+                    possis[o](cube);
+                    possis[o](cube);
+                    possis[o](cube);
+                    }
+                    o ++;
+                }
+                if (me == false){break;}
+                possis[i2](cube);
+                possis[i2](cube);
+                possis[i2](cube);
+            }
+            i2 ++;
+        }
+        if (me == false){break;}
+        possis[l2](cube);
+        possis[l2](cube);
+        possis[l2](cube);
+        }
+        l2 ++;
+    }
+/*------------------------------------------------------------------------------------------- 6 -----------------------------------------------------------------------------------*/
+    
+    
     }}}}
     
-    std::cout << "solve the white cross now\n[ " << solution << " ]\n";
+    std::cout << "solve the white cross now using\n[ " << solution << " ]\n";
 
     }
 }
