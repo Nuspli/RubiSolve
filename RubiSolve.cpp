@@ -942,6 +942,7 @@ int solve_white_cross(int cube[]){
             break;
         }
         else{
+            i2 = 0;
         while (i2 < le){
             if (me == false){break;}
             possis[i2](cube);
@@ -963,7 +964,6 @@ int solve_white_cross(int cube[]){
                     else{solution += charset[i2];}
                     if (charset[i2] == charset[o]){solution += '2';}
                     else{solution += charset[o];}
-
                     me = false;
                     break;
                 }
