@@ -1587,7 +1587,7 @@ if (me == true){
 
     }
 }
-
+/*------------------------------------------------------------------------------------------f2l------------------------------------------------------------------------------------*/
 int f2l1(int cube[]){
     rnormal(cube);
     uprime(cube);
@@ -1710,9 +1710,396 @@ int f2l9(int cube[]){
 }
 
 int f2l10(int cube[]){
-    
+    yprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
 }
 
+int f2l11(int cube[]){
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l12(int cube[]){
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l13(int cube[]){
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    yprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+}
+
+int f2l14(int cube[]){
+    yprime(cube);
+    rprime(cube);
+    unormal(cube);
+    unormal(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+}
+
+int f2l15(int cube[]){
+    yprime(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+}
+
+int f2l16(int cube[]){
+    yprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    uprime(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+}
+
+int f2l17(int cube[]){
+    fnormal(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    fprime(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l18(int cube[]){
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l19(int cube[]){
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    unormal(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l20(int cube[]){
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l21(int cube[]){
+    rnormal(cube);
+    uprime(cube);
+    uprime(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l22(int cube[]){
+    uprime(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l23(int cube[]){
+    uprime(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    yprime(cube);
+    unormal(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+}
+
+int f2l24(int cube[]){
+    yprime(cube);
+    unormal(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+}
+
+int f2l25(int cube[]){
+    yprime(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+}
+
+int f2l26(int cube[]){
+    yprime(cube);
+    unormal(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+}
+
+int f2l27(int cube[]){
+    yprime(cube);
+    rnormal(cube);
+    uprime(cube);
+    uprime(cube);
+    rprime(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+}
+
+int f2l28(int cube[]){
+    lnormal(cube);
+    mnormal(cube);
+    unormal(cube);
+    rnormal(cube);
+    mprime(cube);
+    uprime(cube);
+    rprime(cube);
+    mnormal(cube);
+    uprime(cube);
+    lprime(cube);
+    mprime(cube);
+    yprime(cube);
+}
+
+int f2l29(int cube[]){
+    uprime(cube);
+    rnormal(cube);
+    uprime(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l30(int cube []){
+    uprime(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+    uprime(cube);
+    uprime(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l31(int cube[]){
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l32(int cube[]){
+    uprime(cube);
+    rnormal(cube);
+    uprime(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+}
+
+int f2l33(int cube[]){
+    yprime(cube);
+    unormal(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+    dprime(cube);
+    eprime(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l34(int cube[]){
+    yprime(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+}
+
+int f2l35(int cube[]){
+    yprime(cube);
+    unormal(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+    uprime(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+}
+
+int f2l36(int cube[]){
+    yprime(cube);
+    unormal(cube);
+    rprime(cube);
+    unormal(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+}
+
+int f2l37(int cube[]){
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    unormal(cube);
+    yprime(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+}
+
+int f2l38(int cube[]){
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l39(int cube[]){
+    uprime(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l40(int cube[]){
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l41(int cube[]){
+    uprime(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    yprime(cube);
+}
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 int solve_f2l(int cube[]){
     
 
