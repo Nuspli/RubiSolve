@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <chrono>
 
 int oli = 0;
 bool me = true;
@@ -734,7 +735,7 @@ int solve_white_cross(int cube[]){
                      lprime, lnormal,
                      bprime, bnormal,
                      uprime, unormal,
-                     eprime, enormal,
+                     dprime, dnormal,
                      };
 
     int le = 16;
@@ -759,7 +760,7 @@ int solve_white_cross(int cube[]){
                                "L'", "L",
                                "B'", "B",
                                "U'", "U",
-                               "E'", "E"
+                               "D'", "D"
                                };
 
     std::string solution;
@@ -1590,6 +1591,7 @@ if (me == true){
 
 int start_solving(int cube[]){
     std::cout << "\nsolving...\n";
+    std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
     rotate_to_starting_position(cube);
 
@@ -1607,8 +1609,8 @@ int start_solving(int cube[]){
                 }
                 x ++;
             }
-
-    std::cout << "\nsolved";
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    std::cout << "solved in " <<  (std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count()) /1000000.0  << "s" << std::endl;
 }
 
 int main()
