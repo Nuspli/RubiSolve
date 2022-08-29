@@ -1580,13 +1580,143 @@ if (me == true){
     }
     l3 ++;
     }
-/*------------------------------------------------------------------------------------------- 9 -----------------------------------------------------------------------------------*/
-
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     }}}}}}}
     
     std::cout << "solve the white cross now using\n[ " << solution << " ]\n";
 
     }
+}
+
+int f2l1(int cube[]){
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    yprime(cube);
+    rprime(cube);
+    unormal(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+}
+
+int f2l2(int cube[]){
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    uprime(cube);
+    yprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+}
+
+int f2l3(int cube[]){
+    rprime(cube);
+    fprime(cube);
+    rnormal(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    fnormal(cube);
+    yprime(cube);
+}
+
+int f2l4(int cube[]){
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+    unormal(cube);
+    unormal(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+    unormal(cube);
+    rnormal(cube);
+    yprime(cube);
+}
+
+int f2l5(int cube[]){
+    rnormal(cube);
+    fnormal(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    fprime(cube);
+    uprime(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l6(int cube[]){
+    yprime(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    uprime(cube);
+    rnormal(cube);
+}
+
+int f2l7(int cube[]){
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l8(int cube[]){
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    uprime(cube);
+    rprime(cube);
+    unormal(cube);
+    rnormal(cube);
+    uprime(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l9(int cube[]){
+    rnormal(cube);
+    unormal(cube);
+    fnormal(cube);
+    rnormal(cube);
+    unormal(cube);
+    rprime(cube);
+    uprime(cube);
+    fprime(cube);
+    rprime(cube);
+    yprime(cube);
+}
+
+int f2l10(int cube[]){
+    
+}
+
+int solve_f2l(int cube[]){
+    
+
+
 }
 
 int start_solving(int cube[]){
@@ -1596,6 +1726,8 @@ int start_solving(int cube[]){
     rotate_to_starting_position(cube);
 
     solve_white_cross(cube);
+
+    solve_f2l(cube);
 
     int x = 0;
             // for debugging
