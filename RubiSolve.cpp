@@ -737,6 +737,16 @@ int solve_white_cross(int cube[]){
                      uprime, unormal,
                      dprime, dnormal,
                      };
+    
+    moves antipossis[] = {mnormal, mprime,
+                          snormal, sprime,
+                          rnormal, rprime,
+                          fnormal, fprime,
+                          lnormal, lprime,
+                          bnormal, bprime,
+                          unormal, uprime,
+                          dnormal, dprime,
+                          };
 
     int le = 16;
 
@@ -776,9 +786,7 @@ int solve_white_cross(int cube[]){
             break;}
         else
         {
-            possis[i](cube);
-            possis[i](cube);
-            possis[i](cube);
+            antipossis[i](cube);
             }
         i ++;
     }
@@ -807,16 +815,12 @@ int solve_white_cross(int cube[]){
                     break;}
                 else
                 {
-                    possis[i](cube);
-                    possis[i](cube);
-                    possis[i](cube);
+                    antipossis[i](cube);
                     }
                 i ++;
             }
             if (me == false){break;}
-            possis[l](cube);
-            possis[l](cube);
-            possis[l](cube);
+            antipossis[l](cube);
         }
         l ++;
     }
@@ -860,23 +864,17 @@ int solve_white_cross(int cube[]){
                             break;}
                         else
                         {
-                            possis[i](cube);
-                            possis[i](cube);
-                            possis[i](cube);
+                            antipossis[i](cube);
                             }
                         i ++;
                     }
                     if (me == false){break;}
-                    possis[l](cube);
-                    possis[l](cube);
-                    possis[l](cube);
+                    antipossis[l](cube);
                 }
                 l ++;
             }
             if (me == false){break;}
-                possis[o](cube);
-                possis[o](cube);
-                possis[o](cube);
+                antipossis[o](cube);
             }
             o ++;
         }
@@ -937,30 +935,22 @@ int solve_white_cross(int cube[]){
                                 break;}
                             else
                             {
-                                possis[i](cube);
-                                possis[i](cube);
-                                possis[i](cube);
+                                antipossis[i](cube);
                                 }
                             i ++;
                         }
                         if (me == false){break;}
-                        possis[l](cube);
-                        possis[l](cube);
-                        possis[l](cube);
+                        antipossis[l](cube);
                     }
                     l ++;
                 }
                 if (me == false){break;}
-                    possis[o](cube);
-                    possis[o](cube);
-                    possis[o](cube);
+                    antipossis[o](cube);
                 }
                 o ++;
             }
             if (me == false){break;}
-            possis[i2](cube);
-            possis[i2](cube);
-            possis[i2](cube);
+            antipossis[i2](cube);
         }
         i2 ++;
     }
@@ -1040,37 +1030,27 @@ int solve_white_cross(int cube[]){
                                     break;}
                                 else
                                 {
-                                    possis[i](cube);
-                                    possis[i](cube);
-                                    possis[i](cube);
+                                    antipossis[i](cube);
                                     }
                                 i ++;
                             }
                             if (me == false){break;}
-                            possis[l](cube);
-                            possis[l](cube);
-                            possis[l](cube);
+                            antipossis[l](cube);
                         }
                         l ++;
                     }
                     if (me == false){break;}
-                    possis[o](cube);
-                    possis[o](cube);
-                    possis[o](cube);
+                    antipossis[o](cube);
                     }
                     o ++;
                 }
                 if (me == false){break;}
-                possis[i2](cube);
-                possis[i2](cube);
-                possis[i2](cube);
+                antipossis[i2](cube);
             }
             i2 ++;
         }
         if (me == false){break;}
-        possis[l2](cube);
-        possis[l2](cube);
-        possis[l2](cube);
+        antipossis[l2](cube);
         }
         l2 ++;
     }
@@ -1171,44 +1151,32 @@ int solve_white_cross(int cube[]){
                                             break;}
                                         else
                                         {
-                                            possis[i](cube);
-                                            possis[i](cube);
-                                            possis[i](cube);
+                                            antipossis[i](cube);
                                             }
                                         i ++;
                                     }
                                     if (me == false){break;}
-                                    possis[l](cube);
-                                    possis[l](cube);
-                                    possis[l](cube);
+                                    antipossis[l](cube);
                                 }
                                 l ++;
                             }
                             if (me == false){break;}
-                            possis[o](cube);
-                            possis[o](cube);
-                            possis[o](cube);
+                            antipossis[o](cube);
                             }
                             o ++;
                         }
                         if (me == false){break;}
-                        possis[i2](cube);
-                        possis[i2](cube);
-                        possis[i2](cube);
+                        antipossis[i2](cube);
                     }
                     i2 ++;
                 }
                 if (me == false){break;}
-                possis[l2](cube);
-                possis[l2](cube);
-                possis[l2](cube);
+                antipossis[l2](cube);
             }
             l2 ++;
         }
         if (me == false){break;}
-        possis[o2](cube);
-        possis[o2](cube);
-        possis[o2](cube);
+        antipossis[o2](cube);
     }
     o2 ++;
     }
@@ -1332,51 +1300,37 @@ if (me == true){
                                                     break;}
                                                 else
                                                 {
-                                                    possis[i](cube);
-                                                    possis[i](cube);
-                                                    possis[i](cube);
+                                                    antipossis[i](cube);
                                                     }
                                                 i ++;
                                             }
                                             if (me == false){break;}
-                                            possis[l](cube);
-                                            possis[l](cube);
-                                            possis[l](cube);
+                                            antipossis[l](cube);
                                         }
                                         l ++;
                                     }
                                     if (me == false){break;}
-                                    possis[o](cube);
-                                    possis[o](cube);
-                                    possis[o](cube);
+                                    antipossis[o](cube);
                                     }
                                     o ++;
                                 }
                                 if (me == false){break;}
-                                possis[i2](cube);
-                                possis[i2](cube);
-                                possis[i2](cube);
+                                antipossis[i2](cube);
                             }
                             i2 ++;
                         }
                         if (me == false){break;}
-                        possis[l2](cube);
-                        possis[l2](cube);
-                        possis[l2](cube);
+                        antipossis[l2](cube);
                     }
                     l2 ++;
                 }
                 if (me == false){break;}
-                possis[o2](cube);
-                possis[o2](cube);
-                possis[o2](cube);
+                antipossis[o2](cube);
             }
             o2 ++;
         }
         if (me == false){break;}
-        possis[i3](cube);
-        possis[i3](cube);
-        possis[i3](cube);
+        antipossis[i3](cube);
         }
         i3 ++;
     }
@@ -1525,58 +1479,42 @@ if (me == true){
                                                         break;}
                                                     else
                                                     {
-                                                        possis[i](cube);
-                                                        possis[i](cube);
-                                                        possis[i](cube);
+                                                        antipossis[i](cube);
                                                         }
                                                     i ++;
                                                 }
                                                 if (me == false){break;}
-                                                possis[l](cube);
-                                                possis[l](cube);
-                                                possis[l](cube);
+                                                antipossis[l](cube);
                                             }
                                             l ++;
                                         }
                                         if (me == false){break;}
-                                        possis[o](cube);
-                                        possis[o](cube);
-                                        possis[o](cube);
+                                        antipossis[o](cube);
                                         }
                                         o ++;
                                     }
                                     if (me == false){break;}
-                                    possis[i2](cube);
-                                    possis[i2](cube);
-                                    possis[i2](cube);
+                                    antipossis[i2](cube);
                                 }
                                 i2 ++;
                             }
                             if (me == false){break;}
-                            possis[l2](cube);
-                            possis[l2](cube);
-                            possis[l2](cube);
+                            antipossis[l2](cube);
                         }
                         l2 ++;
                     }
                     if (me == false){break;}
-                    possis[o2](cube);
-                    possis[o2](cube);
-                    possis[o2](cube);
+                    antipossis[o2](cube);
                 }
                 o2 ++;
             }
             if (me == false){break;}
-            possis[i3](cube);
-            possis[i3](cube);
-            possis[i3](cube);
+            antipossis[i3](cube);
             }
             i3 ++;
         }
     if (me == false){break;}
-    possis[l3](cube);
-    possis[l3](cube);
-    possis[l3](cube);
+    antipossis[l3](cube);
     }
     l3 ++;
     }
@@ -2101,6 +2039,87 @@ int f2l41(int cube[]){
 }
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 int solve_f2l(int cube[]){
+    int solved = 1;
+    int cd = 6;
+    int cr;
+    int cf;
+    int cl;
+    int cb;
+
+    while (solved < 5){
+        cf = cube[13];
+        cr = cube[22];
+        cl = cube[40];
+        cb = cube[31];
+
+        if (cube = solvedf2l){std::cout << "F2L : [ already solved ]"; break;}//------------------------------------working on this-----------------------------------------------
+
+        else if (cube[14] == cf and cube[17] == cf and cube[47] == cd and cube[21] == cr and cube[24] == cr){
+            //std::cout << "\nF2L pair " << solved << " : [already solved]\n";
+            solved ++;
+            yprime(cube);
+            if (cube[14] == cf and cube[17] == cf and cube[47] == cd and cube[21] == cr and cube[24] == cr){
+                //std::cout << "\nF2L pair " << solved << " : [already solved]\n";
+                solved ++;
+                yprime(cube);
+                if (cube[14] == cf and cube[17] == cf and cube[47] == cd and cube[21] == cr and cube[24] == cr){
+                    //std::cout << "\nF2L pair " << solved << " : [already solved]\n";
+                    yprime(cube);
+                    solved ++;
+                    std::cout << "\nF2L pair " << solved << " : [ already solved ]\n";
+                    std::cout << "\nF2L pair " << solved << " : [ already solved ]\n";
+                    std::cout << "\nF2L pair " << solved << " : [ already solved ]\n";
+                    std::cout << "[ y ]\n";
+                }
+                else{
+                    ynormal(cube);
+                    std::cout << "\nF2L pair " << solved << " : [ already solved ]\n";
+                    std::cout << "\nF2L pair " << solved << " : [ already solved ]\n";
+                    std::cout << "[ y2 ]\n";
+                }
+            }
+            else{
+                    ynormal(cube);
+                    std::cout << "\nF2L pair " << solved << " : [ already solved ]\n";
+                    std::cout << "[ y\' ]\n";
+                }
+        }
+        else if (cube[14] == cr and cube[17] == cf and cube[47] == cd and cube[21] == cf and cube[24] == cr){
+            f2l1;
+            std::cout << "\nF2L pair " << solved << " : [ (RU\'R\'U) y\' (R\'U2RU\'U\') (R\'UR) ]\n";
+            solved ++;}
+        else if (cube[10] == cf and cube[17] == cf and cube[47] == cd and cube[7] == cr and cube[24] == cr){
+            f2l2;
+            std::cout << "\nF2L pair " << solved << " : [ (URU\'R\'U\') y' (R\'UR) ]\n";
+            solved ++;}
+        else if (cube[5] == cf and cube[17] == cf and cube[47] == cd and cube[19] == cr and cube[24] == cr){
+            f2l3;
+            std::cout << "\nF2L pair " << solved << " : [ (R\'F\'RU) (RU\'R\'F) y\' ]\n";
+            solved ++;}
+        else if (cube[14] == cf and cube[17] == cd and cube[47] == cr and cube[21] == cr and cube[24] == cf){
+            f2l4;
+            std::cout << "\nF2L pair " << solved << " : [ (RUR\'U\') (RU2R\'U\') (RUR\') y\' ]\n";
+            solved ++;}
+        else if (cube[14] == cr and cube[17] == cd and cube[47] == cr and cube[21] == cf and cube[24] == cf){
+            f2l5;
+            std::cout << "\nF2L pair " << solved << " : [ (RUR\'U\') (RU2R\'U\') (RUR\') y\' ]\n";
+            solved ++;}
+        else if (cube[7] == cr and cube[17] == cd and cube[47] == cr and cube[10] == cf and cube[24] == cf){
+            f2l6;
+            std::cout << "\nF2L pair " << solved << " : [ (RF) U (RU\'R\'F\') (U\'R\') ]\n";
+            solved ++;}
+            ...
+            
+            
+            
+            
+        }
+        
+
+
+
+
+
     
 
 
