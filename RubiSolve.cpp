@@ -4,6 +4,8 @@
 
 int oli = 0;
 bool me = true;
+bool check = true;
+int pri = 0;
 
 int startArt(){
     std::cout << "<================================================================================================>" << std::endl;
@@ -135,6 +137,11 @@ int unormal(int cube[]){
     cube[3] = cube[7];
     cube[7] = cube[5];
     cube[5] = buffer5;
+}
+
+int utwo(int cube[]){
+    unormal(cube);
+    unormal(cube);
 }
 
 int rprime(int cube[]){
@@ -279,6 +286,11 @@ int lnormal(int cube[]){
     cube[39] = cube[43];
     cube[43] = cube[41];
     cube[41] = buffer5;
+}
+
+int ltwo(int cube[]){
+    lnormal(cube);
+    lnormal(cube);
 }
     
 int fprime(int cube[]){
@@ -497,6 +509,11 @@ int bnormal(int cube[]){
     cube[32] = buffer5;
 }
 
+int btwo(int cube[]){
+    bnormal(cube);
+    bnormal(cube);
+}
+
 int mprime(int cube[]){
     // middle ring rotation
     int buffer1 = cube[1];
@@ -684,26 +701,26 @@ int rotate_to_starting_position(int cube[]){
         if (cube[4] == 6){
             xnormal(cube);
             xnormal(cube);
-            std::cout << "bring the white site to the bottom\n[ x2 ]\n\n";
+            std::cout << "white side : [ x2 ]\n\n";
         }
         else if (cube[13] == 6){
             xprime(cube);
-            std::cout << "bring the white site to the bottom\n[ x' ]\n\n";
+            std::cout << "white side : [ x' ]\n\n";
         }
         else if (cube[22] == 6){
             znormal(cube);
-            std::cout << "bring the white site to the bottom\n[ z ]\n\n";
+            std::cout << "white side : [ z ]\n\n";
         }
         else if (cube[31] == 6){
             xnormal(cube);
-            std::cout << "bring the white site to the bottom\n[ x ]\n\n";
+            std::cout << "white side : [ x ]\n\n";
         }
         else{
             zprime(cube);
-            std::cout << "bring the white site to the bottom\n[ z' ]\n\n";
+            std::cout << "white side : [ z' ]\n\n";
         }
     }
-    else{std::cout << "white side is already at the bottom\n\n";}
+    else{std::cout << "white side : [ already at the bottom ]\n\n";}
     if (cube[13] != 2){
                 int counti = 0;
                 while (true){
@@ -1521,7 +1538,7 @@ if (me == true){
 /*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
     }}}}}}}
     
-    std::cout << "solve the white cross now using\n[ " << solution << " ]\n";
+    std::cout << "white cross : [ " << solution << " ]\n\n";
 
     }
 }
@@ -2037,78 +2054,296 @@ int f2l41(int cube[]){
     rprime(cube);
     yprime(cube);
 }
-/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
-int solve_f2l(int cube[]){
-    int solved = 1;
-    int cd = 6;
-    int cr;
-    int cf;
-    int cl;
-    int cb;
 
-    while (solved < 5){
+std::string carry[41] = {"(RU\'R\'U) y\' (R\'U2RU\'U\') (R\'UR)", "(URU\'R\'U\') y\' (R\'UR)",                 "(R\'F\'RU) (RU\'R\'F) (y\')",        "(RUR\'U\') (RU2R\'U\') (RUR\') (y\')",
+                         "(RF) U (RU\'R\'F\') (U\'R\') (y\')",    "y\' (R\'U\'RU) (R\'U\'R)",                  "(RU\'R\'U) (RU\'R\') (y\')",         "(RU\'R\'U) (RU\'U\'R\'U) (RU\'R\') (y\')",
+                         "(RU) F (RUR\'U\') F\'R\' (y\')",        "y\' (R\'URU\') (R\'UR)",                    "(RUR\'U\') (RUR\') (y\')",           "(RUR\'U\')2 (RUR\') (y\')",
+                         "(RU\'R\'U) y\' (R\'UR)",                "y\' (R\'U2) (RUR\'U\'R)",                   "y\'U\' (R\'U2) (RU\'R\'UR)",         "y\' (R\'URU\'U\') (R\'U\'R)",
+                         "FU (RU\'R\'F\') (RU\'R\') (y\')",       "U (RU\'R\'U\') (RU\'R\'U) (RU\'R\') (y\')", "(RU\'R\'U2) (RUR\') (y\')",          "U (RU\'U\') (R\'URU\'R\') (y\')",
+                         "(RU\'U\') (R\'U\'RUR\') (y\')",         "U\' (RU\'R\'U2) (RU\'R\') (y\')",           "U\' (RUR\') y\' (UR\'U\'R)",         "y\'U (R\'URU\') (R\'U\'R)",
+                         "y\' (R\'U\'R)",                         "y\'U (R\'U\'RU\') (R\'U\'R)",               "y\' (RU\'U\') (R\'2U\') (R2U\'R\')", "(lU) (rU\'r\'U\') l\' (y\')",
+                         "U\' (RU\'U\') (R\'U2) (RU\'R\') (y\')", "U\' (RUR\'U\') (RU\'U\'R\') (y\')",         "URU\'R\' (y\')",                     "U\' (RU\'U\'R\'U) (RUR\')"
+                         "y\'U (R\'U\'R) d\' (RUR\') (y\')",      "y\'U\' (R\'UR)",                            "y\'U (R\'U\'RU\'U\') (R\'UR)",       "y\'U (R\'U2RU\'U\') (R\'UR)",
+                         "(RU\'R\'U2) y\' (R\'U\'R)",             "(RU\'R\'U) (RU\'R\'U2) (RU\'R\') (y\')",    "U\' (RUR\'U) (RUR\') (y\')",         "(RUR\') (y\')",
+                         "U\' (RU\'R\'U) (RUR\') (y\')"};
+
+int cd = 6;
+int cf;
+int cr;
+int cl;
+int cb;
+
+int tryf2l(int cube[], int solved){
+
+    std::cout << "-----tryf2l-----\n";
+
+    cf = cube[13];
+    cr = cube[22];
+    cl = cube[40];
+    cb = cube[31];
+
+    if (cube[14] == cr and cube[17] == cf and cube[47] == cd and cube[21] == cf and cube[24] == cr){
+        f2l1(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 0;}
+    else if (cube[10] == cf and cube[17] == cf and cube[47] == cd and cube[7] == cr and cube[24] == cr){
+        f2l2(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 1;}
+    else if (cube[5] == cf and cube[17] == cf and cube[47] == cd and cube[19] == cr and cube[24] == cr){
+        f2l3(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 2;}
+    else if (cube[14] == cf and cube[17] == cd and cube[47] == cr and cube[21] == cr and cube[24] == cf){
+        f2l4(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 3;}
+    else if (cube[14] == cr and cube[17] == cd and cube[47] == cr and cube[21] == cf and cube[24] == cf){
+        f2l5(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 4;}
+    else if (cube[7] == cr and cube[17] == cd and cube[47] == cr and cube[10] == cf and cube[24] == cf){
+        f2l6(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 5;}
+    else if (cube[5] == cf and cube[17] == cd and cube[47] == cr and cube[19] == cr and cube[24] == cf){
+        f2l7(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 6;}
+    else if (cube[14] == cf and cube[17] == cr and cube[47] == cf and cube[21] == cr and cube[24] == cd){
+        f2l8(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 7;}
+    else if (cube[14] == cr and cube[17] == cr and cube[47] == cf and cube[21] == cf and cube[24] == cd){
+        f2l9(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 8;}
+    else if (cube[10] == cf and cube[17] == cr and cube[47] == cf and cube[7] == cr and cube[24] == cd){
+        f2l10(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 9;}
+    else if (cube[5] == cf and cube[17] == cr and cube[47] == cf and cube[19] == cr and cube[24] == cd){
+        f2l11(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 10;}
+    else if (cube[8] == cd and cube[11] == cr and cube[14] == cf and cube[18] == cf and cube[21] == cr){
+        f2l12(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 11;}
+    else if (cube[8] == cd and cube[11] == cr and cube[14] == cr and cube[18] == cf and cube[21] == cf){
+        f2l13(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 12;}
+    else if (cube[8] == cd and cube[11] == cr and cube[10] == cf and cube[18] == cf and cube[7] == cr){
+        f2l14(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 13;}
+    else if (cube[8] == cd and cube[11] == cr and cube[37] == cf and cube[18] == cf and cube[3] == cr){
+        f2l15(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 14;}
+    else if (cube[8] == cd and cube[11] == cr and cube[28] == cf and cube[18] == cf and cube[1] == cr){
+        f2l16(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 15;}
+    else if (cube[8] == cd and cube[11] == cr and cube[19] == cf and cube[18] == cf and cube[5] == cr){
+        f2l17(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 16;}
+    else if (cube[8] == cd and cube[11] == cr and cube[7] == cf and cube[18] == cf and cube[10] == cr){
+        f2l18(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 17;}
+    else if (cube[8] == cd and cube[11] == cr and cube[3] == cf and cube[18] == cf and cube[37] == cr){
+        f2l19(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 18;}
+    else if (cube[8] == cd and cube[11] == cr and cube[1] == cf and cube[18] == cf and cube[28] == cr){
+        f2l20(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 19;}
+    else if (cube[8] == cd and cube[11] == cr and cube[5] == cf and cube[18] == cf and cube[19] == cr){
+        f2l21(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 20;}
+    else if (cube[8] == cf and cube[11] == cd and cube[18] == cr and cube[14] == cf and cube[21] == cr){
+        f2l22(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 21;}
+    else if (cube[8] == cf and cube[11] == cd and cube[18] == cr and cube[14] == cr and cube[21] == cf){
+        f2l23(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 22;}
+    else if (cube[8] == cf and cube[11] == cd and cube[18] == cr and cube[7] == cr and cube[10] == cf){
+        f2l24(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 23;}
+    else if (cube[8] == cf and cube[11] == cd and cube[18] == cr and cube[3] == cr and cube[37] == cf){
+        f2l25(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 24;}
+    else if (cube[8] == cf and cube[11] == cd and cube[18] == cr and cube[1] == cr and cube[28] == cf){
+        f2l26(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 25;}
+    else if (cube[8] == cf and cube[11] == cd and cube[18] == cr and cube[5] == cr and cube[19] == cf){
+        f2l27(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 26;}
+    else if (cube[8] == cf and cube[11] == cd and cube[18] == cr and cube[7] == cf and cube[10] == cr){
+        f2l28(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 27;}
+    else if (cube[8] == cf and cube[11] == cd and cube[18] == cr and cube[3] == cf and cube[37] == cr){
+        f2l29(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 28;}
+    else if (cube[8] == cf and cube[11] == cd and cube[18] == cr and cube[1] == cf and cube[28] == cr){
+        f2l30(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 29;}
+    else if (cube[8] == cf and cube[11] == cd and cube[18] == cr and cube[5] == cf and cube[19] == cr){
+        f2l31(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 30;}
+    else if (cube[8] == cr and cube[11] == cf and cube[18] == cd and cube[21] == cr and cube[14] == cf){
+        f2l32(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 31;}
+    else if (cube[8] == cr and cube[11] == cf and cube[18] == cd and cube[21] == cf and cube[14] == cr){
+        f2l33(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 32;}
+    else if (cube[8] == cr and cube[11] == cf and cube[18] == cd and cube[10] == cf and cube[7] == cr){
+        f2l34(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 33;}
+    else if (cube[8] == cr and cube[11] == cf and cube[18] == cd and cube[37] == cf and cube[3] == cr){
+        f2l35(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 34;}
+    else if (cube[8] == cr and cube[11] == cf and cube[18] == cd and cube[28] == cf and cube[1] == cr){
+        f2l36(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 35;}
+    else if (cube[8] == cr and cube[11] == cf and cube[18] == cd and cube[19] == cf and cube[5] == cr){
+        f2l37(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 36;}
+    else if (cube[8] == cr and cube[11] == cf and cube[18] == cd and cube[10] == cr and cube[7] == cf){
+        f2l38(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 37;}
+    else if (cube[8] == cr and cube[11] == cf and cube[18] == cd and cube[37] == cr and cube[3] == cf){
+        f2l39(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 38;}
+    else if (cube[8] == cr and cube[11] == cf and cube[18] == cd and cube[28] == cr and cube[1] == cf){
+        f2l40(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 39;}
+    else if (cube[8] == cr and cube[11] == cf and cube[18] == cd and cube[19] == cr and cube[5] == cf){
+        f2l41(cube);
+        std::cout << "\nF2L pair " << solved << " : [ ";
+        solved ++; pri = 40;}
+    else{
+        check = false;
+        pri = -1;
+    }
+    if (pri != -1){std::cout << carry[pri] << std::endl;}
+    else{check = true;}
+}
+
+/*---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+int solve_f2l(int cube[]){
+
+    moves hmm[9] = {unormal, utwo, uprime,
+                  lnormal, ltwo, lprime,
+                  bnormal, btwo, bprime};
+    
+    moves hmmanti[9] = {uprime, utwo, unormal,
+                      lprime, ltwo, lnormal,
+                      bprime, btwo, bnormal};
+
+    std::string h[9] = {"U", "U2", "U\'"
+                        "L", "L2", "L\'"
+                        "B", "B2", "B\'"};
+
+    std::string hanti[9] = {"U\'", "U2", "U"
+                            "L\'", "L2", "L"
+                            "B\'", "B2", "B"};
+
+    int solved = 1;    
+
+    cf = cube[13];
+    cr = cube[22];
+    cl = cube[40];
+    cb = cube[31];
+
+    if (cube[12] == cf and cube[13] == cf and cube[14] == cf and cube[15] == cf and cube[16] == cf and cube[17] == cf and
+            cube[21] == cr and cube[22] == cr and cube[23] == cr and cube[24] == cr and cube[25] == cr and cube[26] == cr and 
+            cube[39] == cl and cube[40] == cl and cube[41] == cl and cube[42] == cl and cube[43] == cl and cube[44] == cl and 
+            cube[30] == cb and cube[31] == cb and cube[32] == cb and cube[33] == cb and cube[34] == cb and cube[35] == cb
+            ){std::cout << "F2L : [ already solved ]\n"; solved = 5;}
+        
+    else if (cube[14] == cf and cube[17] == cf and cube[47] == cd and cube[21] == cr and cube[24] == cr){
+        solved = 2;
+        yprime(cube);
         cf = cube[13];
         cr = cube[22];
         cl = cube[40];
         cb = cube[31];
 
-        if (cube = solvedf2l){std::cout << "F2L : [ already solved ]"; break;}//------------------------------------working on this-----------------------------------------------
-
-        else if (cube[14] == cf and cube[17] == cf and cube[47] == cd and cube[21] == cr and cube[24] == cr){
-            //std::cout << "\nF2L pair " << solved << " : [already solved]\n";
-            solved ++;
+        if (cube[14] == cf and cube[17] == cf and cube[47] == cd and cube[21] == cr and cube[24] == cr){
+            solved = 3;
             yprime(cube);
+            cf = cube[13];
+            cr = cube[22];
+            cl = cube[40];
+            cb = cube[31];
+            
             if (cube[14] == cf and cube[17] == cf and cube[47] == cd and cube[21] == cr and cube[24] == cr){
-                //std::cout << "\nF2L pair " << solved << " : [already solved]\n";
-                solved ++;
+
+                solved = 4;
                 yprime(cube);
-                if (cube[14] == cf and cube[17] == cf and cube[47] == cd and cube[21] == cr and cube[24] == cr){
-                    //std::cout << "\nF2L pair " << solved << " : [already solved]\n";
-                    yprime(cube);
-                    solved ++;
-                    std::cout << "\nF2L pair " << solved << " : [ already solved ]\n";
-                    std::cout << "\nF2L pair " << solved << " : [ already solved ]\n";
-                    std::cout << "\nF2L pair " << solved << " : [ already solved ]\n";
-                    std::cout << "[ y ]\n";
-                }
-                else{
-                    ynormal(cube);
-                    std::cout << "\nF2L pair " << solved << " : [ already solved ]\n";
-                    std::cout << "\nF2L pair " << solved << " : [ already solved ]\n";
-                    std::cout << "[ y2 ]\n";
-                }
+
+                std::cout << "\nF2L pair 1 : [ already solved ]\n";
+                std::cout << "\nF2L pair 2 : [ already solved ]\n";
+                std::cout << "\nF2L pair 3 : [ already solved ]\n";
+                std::cout << "[ y ]\n";
             }
             else{
-                    ynormal(cube);
-                    std::cout << "\nF2L pair " << solved << " : [ already solved ]\n";
-                    std::cout << "[ y\' ]\n";
-                }
+                ynormal(cube);
+                std::cout << "\nF2L pair 1 : [ already solved ]\n";
+                std::cout << "\nF2L pair 2 : [ already solved ]\n";
+                std::cout << "[ y2 ]\n";
+            }
         }
-        else if (cube[14] == cr and cube[17] == cf and cube[47] == cd and cube[21] == cf and cube[24] == cr){
-            f2l1;
-            std::cout << "\nF2L pair " << solved << " : [ (RU\'R\'U) y\' (R\'U2RU\'U\') (R\'UR) ]\n";
-            solved ++;}
-        else if (cube[10] == cf and cube[17] == cf and cube[47] == cd and cube[7] == cr and cube[24] == cr){
-            f2l2;
-            std::cout << "\nF2L pair " << solved << " : [ (URU\'R\'U\') y' (R\'UR) ]\n";
-            solved ++;}
-        else if (cube[5] == cf and cube[17] == cf and cube[47] == cd and cube[19] == cr and cube[24] == cr){
-            f2l3;
-            std::cout << "\nF2L pair " << solved << " : [ (R\'F\'RU) (RU\'R\'F) y\' ]\n";
-            solved ++;}
-        else if (cube[14] == cf and cube[17] == cd and cube[47] == cr and cube[21] == cr and cube[24] == cf){
-            f2l4;
-            std::cout << "\nF2L pair " << solved << " : [ (RUR\'U\') (RU2R\'U\') (RUR\') y\' ]\n";
-            solved ++;}
-        else if (cube[14] == cr and cube[17] == cd and cube[47] == cr and cube[21] == cf and cube[24] == cf){
-            f2l5;
-            std::cout << "\nF2L pair " << solved << " : [ (RUR\'U\') (RU2R\'U\') (RUR\') y\' ]\n";
-            solved ++;}
-        else if (cube[7] == cr and cube[17] == cd and cube[47] == cr and cube[10] == cf and cube[24] == cf){
-            f2l6;
-            std::cout << "\nF2L pair " << solved << " : [ (RF) U (RU\'R\'F\') (U\'R\') ]\n";
-            solved ++;}
-            ...
+        else{
+                std::cout << "\nF2L pair 1 : [ already solved ]\n";
+                std::cout << "[ y\' ]\n";
+            }
+    }
+
+    while (solved < 5){std::cout << "while solved < 5\n";
+
+        tryf2l(cube, solved);
+        oli = 0;
+        if(check == false){while (check == false){
+            hmm[oli](cube);
+            tryf2l;
+            if (check == true){
+                std::cout << h[oli] << " ]" << carry[pri] << "[ " << hanti[oli] << " ]\n";
+                hmmanti[oli](cube);
+            }
+            else{
+                hmmanti[oli](cube);
+                oli ++;
+            }
+        }
+        }
+            
             
             
             
@@ -2134,6 +2369,7 @@ int start_solving(int cube[]){
     solve_white_cross(cube);
 
     solve_f2l(cube);
+    std::cout << "\n";
 
     int x = 0;
             // for debugging
